@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 
-
 export default function Counter({ end, duration = 2000, suffix = "" }) {
   const [count, setCount] = useState(0);
   const [start, setStart] = useState(false);
