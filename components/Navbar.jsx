@@ -91,11 +91,8 @@ export default function Navbar() {
   const menuItems = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
-    { name: "Products", path: "/products" },
-    { name: "Facilities", path: "/facilities" },
     { name: "Blogs", path: "/blogs" },
-    { name: "Career ", path: "/career" },
-    { name: "Gallery", path: "/gallery" },
+    { name: "Services", path: "/services" },
   ];
 
   const isTransparent = !isScrolled;

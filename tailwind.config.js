@@ -8,12 +8,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#00a0c6",
-        Secound_primary: "#007dc5",
-        secondary: "#034ea2",
-        secondary_two: "#0066b3",
-        border_color: "#e5e7eb",
-        soft_black: `#1A1A1A`,
+        primary: "#0F172A", // Deep Navy (Main brand color)
+        primary_light: "#1E3A8A", // Corporate Blue
+        // secondary: "#F59E0B", // Gold Accent (Premium feel)
+        secondary: "#10B981", // Emerald Green
+        secondary_two: "#FBBF24", // Light Gold (Hover / highlights)
+        border_color: "#E5E7EB", // Light border
+        soft_black: "#111827", // Dark text
+        background: "#F8FAFC", // Main background
       },
     },
     keyframes: {

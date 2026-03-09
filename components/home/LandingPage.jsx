@@ -1,305 +1,156 @@
-// "use client";
-// import Slider from "react-slick";
-// import { motion } from "framer-motion";
-// import { useState } from "react";
-// import Button from "../Button";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-// import { FaArrowLeft, FaArrowRight, FaBriefcaseMedical } from "react-icons/fa";
-// import Link from "next/link";
+"use client";
+import Slider from "react-slick";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { FaArrowLeft, FaArrowRight, FaBalanceScale, FaBriefcaseMedical } from "react-icons/fa";
+import Link from "next/link";
+import Button from "../Button";
 
-// const containerVariants = {
-//   hidden: { opacity: 0 },
-//   visible: {
-//     opacity: 1,
-//     transition: { staggerChildren: 0.3 },
-//   },
-// };
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.3 },
+  },
+};
 
-// const itemVariants = {
-//   hidden: { opacity: 0, y: 30 },
-//   visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-// };
-
-// export default function LandingPage() {
-//   const [currentSlide, setCurrentSlide] = useState(0);
-
-//   const slides = [
-//     {
-//       subtitle: "Since 2010 • Bangladesh",
-//       title: "Advancing Animal Health Innovation",
-//       description:
-//         "Bridge Pharmaceuticals Ltd. is a science-driven Animal Health company dedicated exclusively to Veterinary, Aquaculture, Nutritional, and Biosecurity solutions — ensuring healthier animals and safer food production.",
-//       image: "/slider/bridge-1.jpg",
-//       align: "left",
-//     },
-//     {
-//       subtitle: "Quality • Research • Leadership",
-//       title: "Trusted Partner of Farmers & Veterinarians",
-//       description:
-//         "With a diversified portfolio of therapeutic and nutritional solutions, we empower livestock, poultry, and aquaculture sectors through innovation, affordability, and uncompromising quality standards.",
-//       image: "/slider/bridge-2.jpg",
-//       align: "center",
-//     },
-//     {
-//       subtitle: "Sustainable Growth • National Impact",
-//       title: "Building a Healthier Future Together",
-//       description:
-//         "Committed to excellence, integrity, and sustainability, Bridge Pharmaceuticals contributes to animal welfare, food safety, and long-term agricultural prosperity across Bangladesh.",
-//       image: "/slider/bridge-3.jpg",
-//       align: "right",
-//     },
-//   ];
-
-//   // const slides = [
-//   //   {
-//   //     subtitle: "Comprehensive Veterinary Solutions",
-//   //     title: "Your One-Stop Animal Health Partner",
-//   //     description:
-//   //       "Bridge Pharmaceuticals Ltd. offers a complete range of high-quality veterinary medicines, vaccines, and nutritional supplements designed to enhance livestock productivity and animal welfare.",
-//   //     image: "/slider/bridge-1.jpg",
-//   //     align: "left",
-//   //   },
-//   //   {
-//   //     subtitle: "Scientific Excellence & Innovation",
-//   //     title: "Advancing Veterinary Science",
-//   //     description:
-//   //       "Our dedicated research and development team is committed to creating cutting-edge formulations and treatments, ensuring the best possible care for poultry, livestock, and aquaculture.",
-//   //     image: "/slider/bridge-2.jpg",
-//   //     align: "center",
-//   //   },
-//   //   {
-//   //     subtitle: "Nationwide Distribution Network",
-//   //     title: "Reaching Every Farm in Bangladesh",
-//   //     description:
-//   //       "With a robust supply chain and expert technical support, we ensure that farmers and veterinarians have immediate access to the essential animal health products they need.",
-//   //     image: "/slider/bridge-3.jpg",
-//   //     align: "right",
-//   //   },
-//   // ];
-
-//   const getAlignmentClasses = (align) => {
-//     switch (align) {
-//       case "center":
-//         return "items-center text-center mx-auto";
-//       case "right":
-//         return "items-end text-right ml-auto";
-//       default:
-//         return "items-start text-left";
-//     }
-//   };
-
-//   const settings = {
-//     dots: false,
-//     infinite: true,
-//     fade: true,
-//     speed: 1000,
-//     arrows: true,
-//     autoplay: true,
-//     autoplaySpeed: 5000,
-//     slidesToShow: 1,
-//     slidesToScroll: 1,
-//     nextArrow: <NextArrow />,
-//     prevArrow: <PrevArrow />,
-//     beforeChange: (_, next) => setCurrentSlide(next),
-//   };
-
-//   return (
-//     // <section className="relative overflow-hidden group">
-//     //   <Slider {...settings}>
-//     //     {slides.map((slide, index) => (
-//     //       <div key={index} className="h-screen relative">
-//     //         {/* Background image */}
-//     //         <div
-//     //           className="absolute inset-0 bg-cover bg-center"
-//     //           style={{ backgroundImage: `url(${slide.image})` }}
-//     //         />
-//     //         <div className="absolute inset-0 bg-black/50" />
-
-//     //         <div className="relative h-full flex items-center custom-container mx-auto">
-//     //           <motion.div
-//     //             key={
-//     //               currentSlide === index
-//     //                 ? `slide-${index}-${Date.now()}`
-//     //                 : index
-//     //             }
-//     //             className={`max-w-3xl flex flex-col ${getAlignmentClasses(
-//     //               slide.align,
-//     //             )}`}
-//     //             variants={containerVariants}
-//     //             initial="hidden"
-//     //             animate="visible"
-//     //           >
-//     //             {/* Subtitle */}
-//     //             <motion.span
-//     //               variants={itemVariants}
-//     //               className="text-primary uppercase tracking-widest text-sm mb-3"
-//     //             >
-//     //               #{slide.subtitle}
-//     //             </motion.span>
-
-//     //             {/* Title */}
-//     //             <motion.h1
-//     //               variants={itemVariants}
-//     //               className="text-4xl md:text-5xl font-bold text-secondary_two mb-6"
-//     //             >
-//     //               {slide.title}
-//     //             </motion.h1>
-
-//     //             {/* Description */}
-//     //             <motion.p
-//     //               variants={itemVariants}
-//     //               className="text-white mb-10 max-w-xl"
-//     //             >
-//     //               {slide.description}
-//     //             </motion.p>
-
-//     //             {/* Buttons */}
-//     //             <motion.div variants={itemVariants} className="flex gap-4">
-//     //               <Link href="/shop">
-//     //                 <Button variant="primary">Shop Now</Button>
-//     //               </Link>
-//     //               <Link href="/about">
-//     //                 <Button variant="outline">Learn More</Button>
-//     //               </Link>
-//     //             </motion.div>
-//     //           </motion.div>
-//     //         </div>
-//     //       </div>
-//     //     ))}
-//     //   </Slider>
-//     // </section>
-
-//     <section className="relative w-full h-screen overflow-hidden group">
-//       <Slider {...settings}>
-//         {slides.map((slide, index) => (
-//           <div key={index} className="relative w-full h-screen">
-//             {/* Background */}
-//             <motion.div
-//               key={`bg-${index}-${currentSlide}`}
-//               initial={{ scale: 1.15 }}
-//               animate={{ scale: 1 }}
-//               transition={{ duration: 4, ease: "easeOut" }}
-//               className="absolute inset-0 bg-cover bg-center"
-//               style={{ backgroundImage: `url(${slide.image})` }}
-//             />
-
-//             {/* Overlay */}
-//             <div className="absolute inset-0 bg-black/50" />
-
-//             {/* Content */}
-//             <div className="relative z-10 h-full flex items-center custom-container mx-auto">
-//               <motion.div
-//                 key={currentSlide === index ? `slide-${index}` : index}
-//                 className={`max-w-3xl flex flex-col ${getAlignmentClasses(
-//                   slide.align,
-//                 )}`}
-//                 variants={containerVariants}
-//                 initial="hidden"
-//                 animate={currentSlide === index ? "visible" : "hidden"}
-//               >
-//                 <motion.div
-//                   variants={itemVariants}
-//                   className="flex items-center gap-3 mb-4"
-//                 >
-//                   <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/20 text-primary">
-//                     <FaBriefcaseMedical className="text-sm" />
-//                   </span>
-
-//                   <span className="uppercase tracking-[0.3em] text-xs font-medium text-primary">
-//                     {slide.subtitle}
-//                   </span>
-//                 </motion.div>
-
-//                 <motion.h1
-//                   variants={itemVariants}
-//                   className="text-4xl md:text-6xl font-bold text-white mb-6"
-//                 >
-//                   <span className="text-primary">
-//                     {slide.title.split(" ")[0]}
-//                   </span>{" "}
-//                   {slide.title.split(" ").slice(1).join(" ")}
-//                 </motion.h1>
-
-//                 <motion.p
-//                   variants={itemVariants}
-//                   className="text-gray-200 mb-10 max-w-xl"
-//                 >
-//                   {slide.description}
-//                 </motion.p>
-
-//                 <motion.div variants={itemVariants} className="flex gap-4">
-//                   <Link href="/shop">
-//                     <Button variant="primary">Shop Now</Button>
-//                   </Link>
-//                   <Link href="/about">
-//                     <Button variant="outline">Learn More</Button>
-//                   </Link>
-//                 </motion.div>
-//               </motion.div>
-//             </div>
-//           </div>
-//         ))}
-//       </Slider>
-//     </section>
-//   );
-// }
-
-// const PrevArrow = ({ onClick }) => (
-//   <div
-//     className="absolute z-10 top-1/2 left-6 -translate-y-1/2 bg-primary text-white p-4 rounded-full cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
-//     onClick={onClick}
-//   >
-//     <FaArrowLeft />
-//   </div>
-// );
-
-// const NextArrow = ({ onClick }) => (
-//   <div
-//     className="absolute z-10 top-1/2 right-6 -translate-y-1/2 bg-primary text-white p-4 rounded-full cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
-//     onClick={onClick}
-//   >
-//     <FaArrowRight />
-//   </div>
-// );
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+};
 
 export default function LandingPage() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+const slides = [
+  {
+    subtitle: "Dubai • UAE Financial Compliance Experts",
+    title: "Audit & Assurance You Can Trust",
+    description:
+      "We provide independent audit and assurance services designed to strengthen financial transparency, ensure regulatory compliance, and build investor confidence for businesses operating across the UAE.",
+    image: "/slider/audit-1.jpg",
+  },
+  {
+    subtitle: "Corporate Advisory • Risk Management",
+    title: "Strategic Financial Advisory",
+    description:
+      "Our experienced advisory team supports organizations with financial restructuring, risk management, and strategic planning to help businesses navigate complex regulatory and economic environments.",
+    image: "/slider/audit-2.jpg",
+  },
+  {
+    subtitle: "40+ Years Experience • Global Standards",
+    title: "Driving Financial Clarity for Enterprises",
+    description:
+      "Combining international accounting standards with deep regional expertise, we deliver precise financial insights that empower leadership teams to make confident, data-driven decisions.",
+    image: "/slider/audit-3.jpg",
+  },
+];
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    fade: true,
+    speed: 0,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    beforeChange: (_, next) => setCurrentSlide(next),
+  };
+
   return (
-    <section className="relative bg-[#0B1C2D] text-white py-28 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-        <div>
-          <p className="text-sm tracking-widest uppercase text-[#C8A951] mb-4">
-            Trusted Audit & Advisory
-          </p>
+    <section className="relative w-full h-screen overflow-hidden group">
+      <Slider {...settings}>
+        {slides.map((slide, index) => (
+          <div key={index} className="relative w-full h-screen">
+            {/* Background */}
+            <motion.div
+              key={`bg-${index}-${currentSlide}`}
+              initial={{ scale: 1.15 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 4, ease: "easeOut" }}
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${slide.image})` }}
+            />
 
-          <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-            Precision-Driven Audit Services in Dubai
-          </h1>
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/50" />
 
-          <p className="mt-6 text-gray-300 text-lg leading-relaxed">
-            We deliver accurate, transparent, and compliance-focused financial
-            audits tailored for modern enterprises operating in the UAE.
-          </p>
+            {/* Content */}
+            <div className="relative z-10 h-full flex items-center custom-container mx-auto">
+              <motion.div
+                key={currentSlide === index ? `slide-${index}` : index}
+                className="max-w-3xl flex flex-col items-center text-center mx-auto"
+                variants={containerVariants}
+                initial="hidden"
+                animate={currentSlide === index ? "visible" : "hidden"}
+              >
+                <motion.div
+                  variants={itemVariants}
+                  className="flex items-center gap-3 mb-4"
+                >
+                  <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/20 text-primary">
+                    <FaBalanceScale className="text-sm" />
+                  </span>
 
-          <div className="mt-10 flex gap-4">
-            <button className="bg-[#5B2EFF] hover:bg-[#4726d1] px-7 py-3 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl">
-              Book Consultation
-            </button>
+                  <span className="uppercase tracking-[0.3em] text-xs font-medium text-primary">
+                    {slide.subtitle}
+                  </span>
+                </motion.div>
 
-            <button className="border border-white/40 px-7 py-3 rounded-xl hover:bg-white hover:text-[#0B1C2D] transition-all duration-300">
-              Explore Services
-            </button>
+                <motion.h1
+                  variants={itemVariants}
+                  className="text-4xl md:text-6xl font-bold text-white mb-6"
+                >
+                  <span className="text-primary">
+                    {slide.title.split(" ")[0]}
+                  </span>{" "}
+                  {slide.title.split(" ").slice(1).join(" ")}
+                </motion.h1>
+
+                <motion.p
+                  variants={itemVariants}
+                  className="text-gray-200 mb-10 max-w-xl"
+                >
+                  {slide.description}
+                </motion.p>
+
+                <motion.div variants={itemVariants} className="flex gap-4">
+                  <Link href="/contact">
+                    <Button variant="primary">Get In Touch</Button>
+                  </Link>
+                  <Link href="/about">
+                    <Button variant="outline">Learn More</Button>
+                  </Link>
+                </motion.div>
+              </motion.div>
+            </div>
           </div>
-        </div>
-
-        <div>
-          <img
-            src="/hero.jpg"
-            alt="Audit Firm"
-            className="rounded-2xl shadow-2xl"
-          />
-        </div>
-      </div>
+        ))}
+      </Slider>
     </section>
   );
 }
+
+const PrevArrow = ({ onClick }) => (
+  <div
+    className="absolute z-10 top-1/2 left-6 -translate-y-1/2 bg-primary text-white p-4 rounded-full cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
+    onClick={onClick}
+  >
+    <FaArrowLeft />
+  </div>
+);
+
+const NextArrow = ({ onClick }) => (
+  <div
+    className="absolute z-10 top-1/2 right-6 -translate-y-1/2 bg-primary text-white p-4 rounded-full cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
+    onClick={onClick}
+  >
+    <FaArrowRight />
+  </div>
+);
